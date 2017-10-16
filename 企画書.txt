@@ -1,2 +1,5 @@
 raspberry piを使ってiot製品を作る
 言語java
+超余裕があればandroidで操作できるように
+
+
