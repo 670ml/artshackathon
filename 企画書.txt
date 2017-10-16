@@ -1,5 +1,6 @@
 raspberry piを使ってiot製品を作る
+端末 Raspberry Pi
+ＯＳ Raspbian
+ツール 
 言語java
 超余裕があればandroidで操作できるように
-
-
