@@ -1,0 +1,47 @@
+raspbian OSインストール
+
+ネット接続
+artswnet
+artswnet2
+
+日本語化
+全インターフェース有効
+teamviewerインストール
+javaインストール
+sudo apt-get update
+sudo apt-get install -y apache2 php mysql-server phpmyadmin
+
+sudo apt-get install i2c-tools
+sudo apt-get install python-smbus
+
+
+強制インストール
+sudo apt install gdebi -y
+テンプレート
+sudo gdebi hogehoge_i386.deb
+sudo dpkg -i --force-architecture *.deb
+sudo dpkg -i --force-architecture AdbeRdr9.4.2-1_i386linux_jpn.deb
+
+
+echo 2 > /sys/class/gpio/export
+echo out > /sys/class/gpio/gpio2/direction
+echo 1 > /sys/class/gpio/gpio2/value
+echo 0 > /sys/class/gpio/gpio2/value
+echo 2 > /sys/class/gpio/unexport
+
+
+bme280購入 2000円
+温湿度・気圧センサー
+sudo i2cdetect -y 1
+cd Desktop
+wget https://raw.githubusercontent.com/SWITCHSCIENCE/BME280/master/Python27/bme280_sample.py
+
+wget https://github.com/kplindegaard/smbus2/archive/master.zip
+解凍
+cd smbus2-master
+sudo pip install smbus2
+
+sudo python bme280_sample.py
+
+
+
