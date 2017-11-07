@@ -7,17 +7,17 @@ artswnet2
 日本語化
 全インターフェース有効
 teamviewerインストール
-javaインストール
 sudo apt-get update
 sudo apt-get install -y apache2 php mysql-server phpmyadmin
+sudo apt-get install -y fonts-takao ibus-mozc gdebi wine
+sudo apt-get install -y apt-file samba cups evince gimp pinta mplayer vlc mpd mpc
+
 
 sudo apt-get install i2c-tools
 sudo apt-get install python-smbus
 
 
 強制インストール
-sudo apt install gdebi -y
-テンプレート
 sudo gdebi hogehoge_i386.deb
 sudo dpkg -i --force-architecture *.deb
 sudo dpkg -i --force-architecture AdbeRdr9.4.2-1_i386linux_jpn.deb
@@ -44,4 +44,7 @@ sudo pip install smbus2
 sudo python bme280_sample.py
 
 
+
+sudo crontab -e
+* * * * * for i in `seq 0 1 59`;do (sleep ${i}; sudo python /var/www/html/assets/py/bme280_sample.py) & done;
 
