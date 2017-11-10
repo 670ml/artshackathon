@@ -6,15 +6,18 @@ artswnet2
 
 日本語化
 全インターフェース有効
-teamviewerインストール
+
 sudo apt-get update
+
+teamviewerインストール
+
 sudo apt-get install -y apache2 php mysql-server phpmyadmin
-sudo apt-get install -y fonts-takao ibus-mozc gdebi wine
+sudo apt-get install -y fonts-takao ibus-mozc ibus-anthy gdebi wine
 sudo apt-get install -y apt-file samba cups evince gimp pinta mplayer vlc mpd mpc
-
-
 sudo apt-get install i2c-tools
 sudo apt-get install python-smbus
+
+
 
 
 強制インストール

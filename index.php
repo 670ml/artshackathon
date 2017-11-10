@@ -3,7 +3,7 @@
 $path = "";
 $folderPath = $_SERVER["REQUEST_URI"];
 $folderPathCnt = preg_match_all("%\/%", $folderPath);
-for($i = 3; $i <= $folderPathCnt; $i++):
+for($i = 1; $i < $folderPathCnt; $i++):
 	$path .= "../";
 endfor;
 /*==============================================*/
