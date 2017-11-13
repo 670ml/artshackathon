@@ -1,5 +1,12 @@
 raspbian OSインストール
 
+pi
+raspberry
+
+sudo sh -c 'wpa_passphrase acywn2 artswnet2 >> /etc/wpa_supplicant/wpa_supplicant.conf'
+
+
+
 ネット接続
 artswnet
 artswnet2
@@ -9,13 +16,14 @@ artswnet2
 
 sudo apt-get update
 
-teamviewerインストール
+sudo apt-get install -y fonts-takao ibus-mozc ibus-anthy gdebi ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
+sudo apt-get install -y apache2 php mysql-server telnet telnet-server phpmyadmin
+sudo apt-get install -y i2c-tools
+sudo apt-get install -y python-smbus
 
-sudo apt-get install -y apache2 php mysql-server phpmyadmin
-sudo apt-get install -y fonts-takao ibus-mozc ibus-anthy gdebi wine
-sudo apt-get install -y apt-file samba cups evince gimp pinta mplayer vlc mpd mpc
-sudo apt-get install i2c-tools
-sudo apt-get install python-smbus
+sudo apt-get install -y apt-file samba cups evince gimp pinta mplayer vlc mpd mpc wine
+
+
 
 
 
@@ -49,5 +57,51 @@ sudo python bme280_sample.py
 
 
 sudo crontab -e
-* * * * * for i in `seq 0 1 59`;do (sleep ${i}; sudo python /var/www/html/assets/py/bme280_sample.py) & done;
+* * * * * for i in `seq 0 10 59`;do (sleep ${i}; sudo python /var/www/html/assets/py/bme280_sample.py) & done;
+
+
+当日やること
+設定　組み立て
+
+プログラム
+
+裏方＆表方の仕事========================
+temp : 20.69  ℃
+pressure : 1010.07 hPa
+hum :  38.54 ％
+↑の形式を取得
+その後
+
+20.69
+1010.07
+38.54
+↑のみを取れるようにしてテキストに情報を保存
+その後raspberry piの機能で10秒ごとに上記のプログラムを実行させるようにする(webで表示させる前提)
+
+
+１時間ごとの温度を取得して、最高気温、最低気温をデータベースに格納
+リアルタイムの情報を基準に、その気温と比較して値が小さい OR 大きい場合textファイルを更新
+１時間ごとにリセット。最高気温の場合-100を代入、最低気温の場合100を代入
+
+
+1分ごとに出力されたテキストデータをデータベースに格納(UPDATE文)
+例えば過去10分のデータが欲しかったら、
+一番古いデータを消して、ずらして新しいデータに上書きする
+その後グラフで表示
+
+========================================
+
+
+裏方の仕事==============================
+phpqueryを使ってアメダスのサイトから情報を50分ごとに抜き取る
+その後データベースに格納。50分ごとに格納すると時間が被る可能性があるため、
+(2017-11-13 10)などで格納し、時間が被ったら格納しない。(ユニークキーを使用)
+
+phpqueryを使って流行り風邪やウイルスなどの情報を抽出して、
+今の気温、湿度が快適かどうかを表示。
+快適でなかった場合どんな症状のリスクがあるかを表示。
+LEDを使って快適だったら緑 OR 青で表示 やばかったら赤 OR 黄で表示(リアルタイム)
+========================================
+
+
 
