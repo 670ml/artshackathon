@@ -51,19 +51,19 @@ endforeach;
       function drawChart() {
       var dataTable= new google.visualization.DataTable();
 dataTable.addColumn('datetime','日時');
-		dataTable.addColumn('number', 'temperature');
+		dataTable.addColumn('number', 'Humidity');
 
       dataTable.addRows([
-          [new Date(2017,11,16,4,0,3),<?=$temp[1]?>],
-          [new Date(2017,11,16,4,0,6),<?=$temp[2]?>],
-          [new Date(2017,11,16,4,0,9),<?=$temp[3]?>],
-          [new Date(2017,11,16,4,0,12),<?=$temp[4]?>],
-          [new Date(2017,11,16,4,0,15),<?=$temp[5]?>],
-          [new Date(2017,11,16,4,0,18),<?=$temp[6]?>],
-          [new Date(2017,11,16,4,0,21),<?=$temp[7]?>],
-          [new Date(2017,11,16,4,0,24),<?=$temp[8]?>],
-          [new Date(2017,11,16,4,0,27),<?=$temp[9]?>],
-          [new Date(2017,11,16,4,0,30),<?=$temp[10]?>]
+          [new Date(2017,11,16,4,0,3),<?=$hum[1]?>],
+          [new Date(2017,11,16,4,0,6),<?=$hum[2]?>],
+          [new Date(2017,11,16,4,0,9),<?=$hum[3]?>],
+          [new Date(2017,11,16,4,0,12),<?=$hum[4]?>],
+          [new Date(2017,11,16,4,0,15),<?=$hum[5]?>],
+          [new Date(2017,11,16,4,0,18),<?=$hum[6]?>],
+          [new Date(2017,11,16,4,0,21),<?=$hum[7]?>],
+          [new Date(2017,11,16,4,0,24),<?=$hum[8]?>],
+          [new Date(2017,11,16,4,0,27),<?=$hum[9]?>],
+          [new Date(2017,11,16,4,0,30),<?=$hum[10]?>]
 
 
       ]);              

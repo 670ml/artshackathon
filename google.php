@@ -24,7 +24,7 @@ function controlsAndDashboards() {
 			date,
 			getRandomInt(0, 200),
 			getRandomInt(0, 200),
-			getRandomInt(0, 200)
+			getRandomInt(0, 200),
 		]);
 	}
 
