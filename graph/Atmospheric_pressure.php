@@ -19,17 +19,11 @@
 
         // データテーブルの作成
         var data = google.visualization.arrayToDataTable([
-          ['時刻', '気温', '降水量', '風速', '日照時間', '積雪深', '湿度', '気圧'],
+          ['時刻', '気圧'],
 
 <?php foreach(range(3, $cnt) as $i): ?>
 			[
 				<?=$time[$i]?>,
-				<?=$temp[$i]?>,
-				<?=$prec[$i]?>,
-				<?=$wisp[$i]?>,
-				<?=$suns[$i]?>,
-				<?=$snow[$i]?>,
-				<?=$humi[$i]?>,
 				<?=$atmo[$i]?>,
 			],
 <?php endforeach; ?>
@@ -37,7 +31,7 @@
 
         // グラフのオプションを設定
         var options = {
-          title: 'Line_chart'
+          title: '気圧'
         };
 
         // LineChart のオブジェクトの作成
