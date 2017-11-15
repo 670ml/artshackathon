@@ -8,14 +8,18 @@ error_reporting(-1);
 
 /*================================================*/
 
+
+
 date_default_timezone_set('Asia/Tokyo');
-$pdo = new PDO("sqlite:../db/sqlite.db");
+$pdo = new PDO("sqlite:/var/www/html/assets/db/sqlite.db");
+
+
 
 /*====================================*/
-$temp_text = file_get_contents("../text/temp.txt");
-$hum_text = file_get_contents("../text/hum.txt");
-$pressure_text = file_get_contents("../text/pressure.txt");
-$date_text = date("i:s");
+$temp_text = file_get_contents("/var/www/html/assets/text/temp.txt");
+$hum_text = file_get_contents("/var/www/html/assets/text/hum.txt");
+$pressure_text = file_get_contents("/var/www/html/assets/text/pressure.txt");
+$date_text = date("H:i:s");
 
 /*====================================*/
 
@@ -31,7 +35,6 @@ $stmt = $pdo->query($str_sql);
 $i = 1;
 $cnt = 0;
 foreach($stmt as $row):
-	$id[$i] = htmlspecialchars($row["id"]);
 	$date[$i] = htmlspecialchars($row["date"]);
 	$temp[$i] = htmlspecialchars($row["temp"]);
 	$hum[$i] = htmlspecialchars($row["hum"]);
@@ -69,9 +72,6 @@ endforeach;
 
 
 /*====================================*/
-$temp[10] = $temp_text;
-$hum[10] = $hum_text;
-$pressure[10] = $pressure_text;
 $str_sql =("
 			UPDATE
 				bme280
@@ -84,18 +84,41 @@ $str_sql =("
 				id = 10
 		");
 $stmt = $pdo->prepare($str_sql);
-	$stmt->bindValue(1, $date_text, PDO::PARAM_STR);
-	$stmt->bindValue(2, $temp[10], PDO::PARAM_STR);
-	$stmt->bindValue(3, $hum[10], PDO::PARAM_STR);
-	$stmt->bindValue(4, $pressure[10], PDO::PARAM_STR);
-	$stmt->execute();
+
+$stmt->bindValue(1, $date_text, PDO::PARAM_STR);
+$stmt->bindValue(2, $temp_text, PDO::PARAM_STR);
+$stmt->bindValue(3, $hum_text, PDO::PARAM_STR);
+$stmt->bindValue(4, $pressure_text, PDO::PARAM_STR);
 
 $stmt->execute();
 
 /*====================================*/
 
 
+/*====================================*/
+$str_sql =("
+			SELECT
+				*
+			FROM
+				bme280
+		");
+$stmt = $pdo->query($str_sql);
+$i = 1;
+$cnt = 0;
+foreach($stmt as $row):
+	$date[$i] = htmlspecialchars($row["date"]);
+	$temp[$i] = htmlspecialchars($row["temp"]);
+	$hum[$i] = htmlspecialchars($row["hum"]);
+	$pressure[$i] = htmlspecialchars($row["pressure"]);
+	$i++;
+	$cnt++;
+endforeach;
+
+/*====================================*/
 
 
 $stmt = null;
 $pdo = null;
+
+
+
