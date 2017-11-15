@@ -1,4 +1,12 @@
 <?php
+/*====発生エラーの理由を全て表示====================*/
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+/*================================================*/
+
+
 /*====フォルダ階層自動取得======================*/
 $path = "";
 $folderPath = $_SERVER["REQUEST_URI"];

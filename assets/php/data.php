@@ -1,11 +1,11 @@
 <?php
 date_default_timezone_set('Asia/Tokyo');
 
-$year = date("Y"); //”N
-$month = date("m"); //ŒŽ
-$day = date("d"); //“ú
-$hour = date("H"); //Žž
-$minute = date("i"); //•ª
-$second = date("s"); //•b
+$year = date("Y"); //å¹´
+$month = date("m"); //æœˆ
+$day = date("d"); //æ—¥
+$hour = date("H"); //æ™‚
+$minute = date("i"); //åˆ†
+$second = date("s"); //ç§’
 
 ?>

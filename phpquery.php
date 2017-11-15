@@ -1,4 +1,11 @@
-﻿<?php
+<?php
+/*====発生エラーの理由を全て表示====================*/
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+/*================================================*/
+
 	require_once 'assets/php/data.php'; //ロード時、一度だけ外部php読み込み
 ?>
 	<?php
