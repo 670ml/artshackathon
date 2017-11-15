@@ -37,7 +37,7 @@
 
         // グラフのオプションを設定
         var options = {
-          title: '会社業績'
+          title: 'Line_chart'
         };
 
         // LineChart のオブジェクトの作成
