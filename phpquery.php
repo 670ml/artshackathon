@@ -1,5 +1,13 @@
 <?php
-require_once("phpQuery-onefile.php");
+/*====発生エラーの理由を全て表示====================*/
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
+/*================================================*/
+
+
+require_once("assets/php/phpQuery-onefile.php");
 $doc = phpQuery::newDocumentFile("http://www.jma.go.jp/jp/amedas_h/today-46106.html?areaCode=&groupCode=");
 
 $i = 1;
