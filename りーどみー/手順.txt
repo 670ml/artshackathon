@@ -4,20 +4,21 @@ pi
 raspberry
 
 sudo sh -c 'wpa_passphrase acywn2 artswnet2 >> /etc/wpa_supplicant/wpa_supplicant.conf'
-
+sudo dhclient eth0
 
 
 ネット接続
 artswnet
 artswnet2
 
+
 日本語化
 全インターフェース有効
 
 sudo apt-get update
 
-sudo apt-get install -y fonts-takao ibus-mozc ibus-anthy gdebi ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
-sudo apt-get install -y apache2 php mysql-server telnet telnet-server phpmyadmin
+sudo apt-get install -y fonts-takao ibus-mozc ibus-anthy gdebi ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname motion
+sudo apt-get install -y apache2 php mysql-server telnet phpmyadmin
 sudo apt-get install -y i2c-tools
 sudo apt-get install -y python-smbus
 
