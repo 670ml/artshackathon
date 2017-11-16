@@ -9,8 +9,8 @@
 	<script>
 		$(function(){
 			$('.devrama-book').DrBook({
-				width: 320, // Book width
-				height: 400 // Book height
+				width: 520, // Book width
+				height: 600 // Book height
 			});
 		});
 	</script>
@@ -21,7 +21,8 @@
 		}
 		body{
 			min-height: 100%;
-			margin-left: calc(50% - 320px / 2);
+			margin-top: 30px;
+			margin-left: 50%;
 		}
 	</style>
 </head>
@@ -39,7 +40,7 @@
 			<li>
 				Usually blank page.
 			</li>
-			<li>Page 1</li>
+			<li><?php require_once("bme280.php") ?></li>
 			<li>Page 2</li>
 			<li>Page 3</li>
 			<li>Page 4</li>
