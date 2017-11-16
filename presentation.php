@@ -40,7 +40,7 @@
 			<li>
 				Usually blank page.
 			</li>
-			<li>Page 1</li>
+			<li><?php require_once("bme280.php") ?></li>
 			<li>Page 2</li>
 			<li>Page 3</li>
 			<li>Page 4</li>
