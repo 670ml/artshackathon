@@ -41,10 +41,10 @@ endforeach;
     <title>google-charts 横軸が日時なグラフ</title>
  
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript" ></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://www.google.com/jsapi"></script>
     
     <!-- スクリプト部分 -->
-    <script type="text/javascript">
+    <script>
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
  
@@ -66,8 +66,12 @@ dataTable.addColumn('datetime','日時');
           [new Date(2017,11,16,4,0,30),<?=$temp[10]?>]
 
 
-      ]);              
-      var options = {title: '横浜市の気温変化'};
+	]);
+		options = {
+			width: 700,
+			height: 700,
+			title: '横浜市の気温変化'
+		};
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(dataTable, options);
       }
@@ -77,7 +81,7 @@ dataTable.addColumn('datetime','日時');
   <!-- HTML部分 -->
   <body>
     
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="height: 1000px;"></div>
  
   </body>
 </html>

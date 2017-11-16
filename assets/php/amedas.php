@@ -9,7 +9,7 @@ error_reporting(-1);
 /*================================================*/
 
 date_default_timezone_set('Asia/Tokyo');
-$date = date("Y-m-d h");
+$date = date("Y-m-d H");
 $j = date("H") + 2;
 require_once("/var/www/html/assets/php/phpQuery-onefile.php");
 $doc = phpQuery::newDocumentFile("http://www.jma.go.jp/jp/amedas_h/today-46106.html");
