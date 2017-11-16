@@ -21,7 +21,7 @@
 		}
 		body{
 			min-height: 100%;
-			margin-top: 30px;
+			margin-top: 40px;
 			margin-left: 50%;
 		}
 	</style>
