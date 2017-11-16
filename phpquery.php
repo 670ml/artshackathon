@@ -16,7 +16,7 @@ error_reporting(-1);
 
 <?php
 require_once("assets/php/phpQuery-onefile.php");
-$doc = phpQuery::newDocumentFile("http://www.jma.go.jp/jp/amedas_h/today-46106.html?areaCode=&groupCode=");
+$doc = phpQuery::newDocumentFile("http://www.jma.go.jp/jp/amedas_h/today-46106.html");
 
 $i = 1;
 $cnt = 0;
@@ -45,7 +45,7 @@ foreach($doc["table:eq(5) tr"] as $row)
 
 
 <table border="1">
-	<?php foreach(range(2, $cnt) as $i): ?>
+	<?php foreach(range(3, $cnt) as $i): ?>
 		<tr>
 			<td><?=$time[$i]?></td>
 			<td><?=$temp[$i]?></td>
