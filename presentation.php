@@ -9,8 +9,8 @@
 	<script>
 		$(function(){
 			$('.devrama-book').DrBook({
-				width: 320, // Book width
-				height: 400 // Book height
+				width: 420, // Book width
+				height: 500 // Book height
 			});
 		});
 	</script>
@@ -21,7 +21,8 @@
 		}
 		body{
 			min-height: 100%;
-			margin-left: calc(50% - 320px / 2);
+			margin-top: 50px;
+			margin-left: calc(75% - 320px / 2);
 		}
 	</style>
 </head>
