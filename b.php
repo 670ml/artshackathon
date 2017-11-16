@@ -47,12 +47,13 @@ endforeach;
 
 <script>
 jQuery( function() {
+	/*====気温========================*/
 	jQuery . jqplot(
 		'jqPlot-temp',
 		[
 			[
 				<?php foreach(range(1, $cnt) as $i): ?>
-				[<?=$i?>, <?=$temp[$i]?>],
+					[<?=$i?>, <?=$temp[$i]?>],
 				<?php endforeach; ?>
 			]
 		],
@@ -62,13 +63,39 @@ jQuery( function() {
 			},
 			axes: {
 				xaxis: {
-					min: 1, //1分からスタート
+					min: 1, //1時からスタート
+					max: 24,
 				}
 			},
 		}
 	);
 
+	/*================================*/
 
+	/*====降水量======================*/
+	jQuery . jqplot(
+		'jqPlot-temp',
+		[
+			[
+				<?php foreach(range(1, $cnt) as $i): ?>
+					[<?=$i?>, <?=$temp[$i]?>],
+				<?php endforeach; ?>
+			]
+		],
+		{
+			title: {
+				text : "降水量",
+			},
+			axes: {
+				xaxis: {
+					min: 1, //1時からスタート
+					max: 24,
+				}
+			},
+		}
+	);
+
+	/*================================*/
 
 } );
 </script>
