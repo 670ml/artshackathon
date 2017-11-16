@@ -1,38 +1,13 @@
 <?php
-$pdo = new PDO("sqlite:assets/db/sqlite.db");
+/*====発生エラーの理由を全て表示====================*/
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 
-$str_sql =("
-			SELECT
-				*
-			FROM
-				bme280
-		");
-$stmt = $pdo->query($str_sql);
-$i = 1;
-$cnt = 0;
-foreach($stmt as $row):
-	$id[$i] = htmlspecialchars($row["id"]);
-	$date[$i] = htmlspecialchars($row["date"]);
-	$temp[$i] = htmlspecialchars($row["temp"]);
-	$hum[$i] = htmlspecialchars($row["hum"]);
-	$pressure[$i] = htmlspecialchars($row["pressure"]);
-	$i++;
-	$cnt++;
-endforeach;
+/*================================================*/
+
+	require_once 'phpquery.php'; //ロード時、一度だけ外部php読み込み
 ?>
-
-<!--
-<table border="1">
-	<?php foreach(range(1, 10) as $i): ?>
-		<tr>
-			<td><?=$date[$i]?></td>
-			<td><?=$temp[$i]?></td>
-			<td><?=$hum[$i]?></td>
-			<td><?=$pressure[$i]?></td>
-		</tr>
-	<?php endforeach; ?>
-</table>
--->
 
 
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -46,22 +21,24 @@ google.charts.setOnLoadCallback(controlsAndDashboards);
 function controlsAndDashboards() {
 	var data = new google.visualization.DataTable();
 	data.addColumn('date', '日');
-	data.addColumn('number', '時刻');
-	data.addColumn('number', '気温');
-	data.addColumn('number', '降水量');
+	data.addColumn('number', 'Temperature');
+	data.addColumn('number', 'Precipitation');
+	data.addColumn('number', 'Wind speed');
 
 	function getRandomInt(min, max) {
 		return Math.floor( Math.random() * (max - min + 1) ) + min;
 	}
-	for (var day = 1; day < 30; ++day) {
-		var date = new Date(2015, 0 ,day);
+//	for (var day = 1; day < 30; ++day) {
+	<?php foreach(range(1, 10) as $i): ?>
+		date = new Date(2015, 0 , <?=$i?>);
 		data.addRow([
 			date,
-			<?=$pressure[i]?>
-			<?=$hum[i]?>
-			<?=$temp[i]?>
+			<?=$temp[$i + 2]?>,
+			<?=$prec[$i + 2]?>,
+			<?=$wisp[$i + 2]?>,
 		]);
-	}
+	<?php endforeach; ?>
+//	}
 
 	var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div'));
 
@@ -84,7 +61,7 @@ function controlsAndDashboards() {
 		}
 	});
 
-	var dogs = new google.visualization.ChartWrapper({
+	var Temperature = new google.visualization.ChartWrapper({
 		chartType: 'AreaChart',
 		containerId: 'chart1_div',
 		options: {
@@ -93,7 +70,7 @@ function controlsAndDashboards() {
 				textPosition: 'none'
 			},
 			vAxis: {
-				title: 'dogs'
+				title: 'Temperature'
 			},
 			colors: ['rgb(255, 99, 132)'],
 			tooltip: {
@@ -106,7 +83,7 @@ function controlsAndDashboards() {
 		}
 	});
 
-	var cats = new google.visualization.ChartWrapper({
+	var Precipitation = new google.visualization.ChartWrapper({
 		chartType: 'AreaChart',
 		containerId: 'chart2_div',
 		options: {
@@ -115,7 +92,7 @@ function controlsAndDashboards() {
 				textPosition: 'none'
 			},
 			vAxis: {
-				title: 'cats'
+				title: 'Precipitation'
 			},
 			colors: ['rgb(54, 162, 235)'],
 			tooltip: {
@@ -128,13 +105,13 @@ function controlsAndDashboards() {
 		}
 	});
 
-	var rabbits = new google.visualization.ChartWrapper({
+	var Windspeed = new google.visualization.ChartWrapper({
 		chartType: 'AreaChart',
 		containerId: 'chart3_div',
 		options: {
 			height: 80,
 			vAxis: {
-				title: 'rabbits'
+				title: 'Windspeed'
 			},
 			colors: ['rgb(255, 206, 86)'],
 			tooltip: {
@@ -147,7 +124,7 @@ function controlsAndDashboards() {
 		}
 	});
 
-	dashboard.bind(chartRangeFilter, [dogs, cats, rabbits]);
+	dashboard.bind(chartRangeFilter, [Temperature, Precipitation, Windspeed]);
 
 	dashboard.draw(data);
 
