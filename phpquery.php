@@ -6,7 +6,8 @@ error_reporting(-1);
 
 /*================================================*/
 
-	require_once 'assets/php/data.php'; //ロード時、一度だけ外部php読み込み
+require_once 'assets/php/data.php'; //ロード時、一度だけ外部php読み込み
+
 ?>
 	<?php
 	echo date("Y年m月d日")."<br />"; // 現在時刻を表示します①
