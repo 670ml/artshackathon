@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Tokyo');
+
 /*====発生エラーの理由を全て表示====================*/
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
@@ -6,7 +8,37 @@ error_reporting(-1);
 
 /*================================================*/
 
-	require_once 'phpquery.php'; //ロード時、一度だけ外部php読み込み
+$pdo = new PDO("sqlite:assets/db/sqlite.db");
+
+$str_sql =("
+			SELECT
+				*
+			FROM
+				amedas
+		");
+$stmt = $pdo->query($str_sql);
+$i = 1;
+$cnt = 0;
+foreach($stmt as $row):
+	$id[$i] = htmlspecialchars($row["id"]);
+	$time[$i] = htmlspecialchars($row["time"]);
+	$temp[$i] = htmlspecialchars($row["temp"]);
+	$prec[$i] = htmlspecialchars($row["prec"]);
+	$widi[$i] = htmlspecialchars($row["widi"]);
+	$wisp[$i] = htmlspecialchars($row["wisp"]);
+	$suns[$i] = htmlspecialchars($row["suns"]);
+	$snow[$i] = htmlspecialchars($row["snow"]);
+	$humi[$i] = htmlspecialchars($row["humi"]);
+	$atmo[$i] = htmlspecialchars($row["atmo"]);
+
+	$year[$i] = date("Y", strtotime($time[$i]));
+	$month[$i] = date("m", strtotime($time[$i]));
+	$day[$i] = date("d", strtotime($time[$i]));
+	$hour[$i] = date("H", strtotime($time[$i]));
+
+	$i++;
+	$cnt++;
+endforeach;
 ?>
 
 
@@ -20,22 +52,19 @@ google.charts.setOnLoadCallback(controlsAndDashboards);
 
 function controlsAndDashboards() {
 	var data = new google.visualization.DataTable();
-	data.addColumn('date', '日');
+	data.addColumn('date', '時');
 	data.addColumn('number', 'Temperature');
 	data.addColumn('number', 'Precipitation');
 	data.addColumn('number', 'Wind speed');
 
-	function getRandomInt(min, max) {
-		return Math.floor( Math.random() * (max - min + 1) ) + min;
-	}
-//	for (var day = 1; day < 30; ++day) {
-	<?php foreach(range(1, 10) as $i): ?>
-		date = new Date(2015, 0 , <?=$i?>);
+
+	<?php foreach(range(1, $cnt) as $i): ?>
+		var date = new Date(0, 0, <?=$i?>);
 		data.addRow([
 			date,
-			<?=$temp[$i + 2]?>,
-			<?=$prec[$i + 2]?>,
-			<?=$wisp[$i + 2]?>,
+			<?=$temp[$i]?>,
+			<?=$prec[$i]?>,
+			<?=$wisp[$i]?>,
 		]);
 	<?php endforeach; ?>
 //	}
@@ -70,7 +99,7 @@ function controlsAndDashboards() {
 				textPosition: 'none'
 			},
 			vAxis: {
-				title: 'Temperature'
+				title: 'Temperature',
 			},
 			colors: ['rgb(255, 99, 132)'],
 			tooltip: {
