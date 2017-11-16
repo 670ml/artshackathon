@@ -8,7 +8,7 @@ error_reporting(-1);
 
 /*================================================*/
 
-require_once 'assets/php/data.php';
+require_once '/var/www/html/assets/php/data.php';
 
 $year_key = $now_year;
 $month_key = $now_month;
@@ -25,7 +25,7 @@ if(isset($_GET["day"])){
 }
 
 
-$pdo = new PDO("sqlite:assets/db/sqlite.db");
+$pdo = new PDO("sqlite:/var/www/html/assets/db/sqlite.db");
 
 $str_sql =("
 			SELECT
@@ -50,6 +50,14 @@ foreach($stmt as $row):
 	$humi[$i] = htmlspecialchars($row["humi"]);
 	$atmo[$i] = htmlspecialchars($row["atmo"]);
 
+	if($temp[$i] == null || $temp[$i] == "" ) $temp[$i] = "0.0";
+	if($prec[$i] == null || $prec[$i] == "" ) $prec[$i] = "0.0";
+	if($wisp[$i] == null || $wisp[$i] == "" ) $wisp[$i] = "0.0";
+	if($suns[$i] == null || $suns[$i] == "" ) $suns[$i] = "0.0";
+	if($snow[$i] == null || $snow[$i] == "" ) $snow[$i] = 0;
+	if($humi[$i] == null || $humi[$i] == "" ) $humi[$i] = 0;
+	if($atmo[$i] == null || $atmo[$i] == "" ) $atmo[$i] = 0;
+
 	$year[$i] = date("Y", strtotime($time[$i]));
 	$month[$i] = date("m", strtotime($time[$i]));
 	$day[$i] = date("d", strtotime($time[$i]));
@@ -59,6 +67,7 @@ foreach($stmt as $row):
 	$cnt++;
 endforeach;
 ?>
+<meta charset="utf-8">
 <title>グラフ</title>
 <link rel="stylesheet" href="assets/css/jquery.jqplot.min.css">
 <script src="assets/js/jquery-3.2.1.min.js"></script>
@@ -120,17 +129,121 @@ jQuery( function() {
 
 	/*====風速========================*/
 	jQuery . jqplot(
-		'jqPlot-prec',
+		'jqPlot-wisp',
 		[
 			[
 				<?php foreach(range(1, $cnt) as $i): ?>
-					[<?=$i?>, <?=$prec[$i]?>],
+					[<?=$i?>, <?=$wisp[$i]?>],
 				<?php endforeach; ?>
 			]
 		],
 		{
 			title: {
-				text : "降水量",
+				text : "風速",
+			},
+			axes: {
+				xaxis: {
+					min: 1, //1時からスタート
+					max: 24,
+				},
+			},
+		}
+	);
+
+	/*================================*/
+
+
+	/*====日照時間====================*/
+	jQuery . jqplot(
+		'jqPlot-suns',
+		[
+			[
+				<?php foreach(range(1, $cnt) as $i): ?>
+					[<?=$i?>, <?=$suns[$i]?>],
+				<?php endforeach; ?>
+			]
+		],
+		{
+			title: {
+				text : "日照時間",
+			},
+			axes: {
+				xaxis: {
+					min: 1, //1時からスタート
+					max: 24,
+				},
+			},
+		}
+	);
+
+	/*================================*/
+
+
+	/*====積雪深======================*/
+	jQuery . jqplot(
+		'jqPlot-snow',
+		[
+			[
+				<?php foreach(range(1, $cnt) as $i): ?>
+					[<?=$i?>, <?=$snow[$i]?>],
+				<?php endforeach; ?>
+			]
+		],
+		{
+			title: {
+				text : "積雪深",
+			},
+			axes: {
+				xaxis: {
+					min: 1, //1時からスタート
+					max: 24,
+				},
+			},
+		}
+	);
+
+	/*================================*/
+
+
+	/*====湿度========================*/
+	jQuery . jqplot(
+		'jqPlot-humi',
+		[
+			[
+				<?php foreach(range(1, $cnt) as $i): ?>
+					[<?=$i?>, <?=$humi[$i]?>],
+				<?php endforeach; ?>
+			]
+		],
+		{
+			title: {
+				text : "湿度",
+			},
+			axes: {
+				xaxis: {
+					min: 1, //1時からスタート
+					max: 24,
+				},
+			},
+		}
+	);
+
+	/*================================*/
+
+
+	/*====気圧========================*/
+	jQuery . jqplot(
+		'jqPlot-atmo',
+		[
+			[
+				<?php foreach(range(1, $cnt) as $i): ?>
+					[<?=$i?>, <?=$atmo[$i]?>],
+				<?php endforeach; ?>
+			]
+		],
+		{
+			title: {
+				text : "気圧",
 			},
 			axes: {
 				xaxis: {
@@ -145,6 +258,7 @@ jQuery( function() {
 
 } );
 </script>
+
 <div id="jqPlot-temp" style="height: 200px; width: 300px;"></div>
 <div id="jqPlot-prec" style="height: 200px; width: 300px;"></div>
 <div id="jqPlot-wisp" style="height: 200px; width: 300px;"></div>
@@ -152,6 +266,3 @@ jQuery( function() {
 <div id="jqPlot-snow" style="height: 200px; width: 300px;"></div>
 <div id="jqPlot-humi" style="height: 200px; width: 300px;"></div>
 <div id="jqPlot-atmo" style="height: 200px; width: 300px;"></div>
-
-
-
