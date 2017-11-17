@@ -421,7 +421,7 @@ endforeach;
 <body>
 
 	<div class="menu">
-		<h1 align="center">横浜市の天気情報</h1>
+		<h2 align="center">横浜市の天気情報</h2>
 		<div id="jqPlot-temp" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-prec" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-wisp" style="height: 200px; width: 300px;"></div>
@@ -431,6 +431,7 @@ endforeach;
 		<div id="jqPlot-atmo" style="height: 200px; width: 300px;"></div>
 	</div>
 	<div class="menu">
+		<h2 align="center">現在の情報</h2>
 		<div id="jqPlot-ajax_temp" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-ajax_hum" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-ajax_pressure" style="height: 200px; width: 300px;"></div>
