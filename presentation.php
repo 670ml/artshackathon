@@ -91,6 +91,9 @@ endforeach;
 			margin: 0 auto;
 			display: inline-block;
 		}
+		.menu h2{
+			color: black;
+		}
 		.devrama-book{
 			margin-top: 150px;
 			margin-left: 50%;
