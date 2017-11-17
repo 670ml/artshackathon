@@ -480,11 +480,24 @@ endforeach;
 				<div style="font-size: 3em;">湿度：<span id="dsp2"></span>％</div>
 				<div style="font-size: 3em;">気圧：<span id="dsp3"></span>hPa</div>
 			</li>
+
 <!--
-			<li><a href="3graph.php">気温グラフ</a></li>
-			<li><a href="2graph.php">湿度グラフ</a></li>
-			<li><a href="1graph.php">気圧グラフ</a></li>
+			<li>
+				<a href="3graph.php">気温グラフ</a>
+				<p>気象庁のサイトから取得した横浜市の気温をデータベースに格納し、グラフ化しています。</p>
+			</li>
+
+			<li>
+				<a href="2graph.php">湿度グラフ</a>
+				<p>気象庁のサイトから取得した横浜市の湿度をデータベースに格納し、グラフ化しています。</p>
+			</li>
+
+			<li>
+				<a href="1graph.php">気圧グラフ</a>
+				<p>気象庁のサイトから取得した横浜市の気圧をデータベースに格納し、グラフ化しています。</p>
+			</li>
 -->
+
 		</ul>
 	</div>
 
