@@ -70,7 +70,7 @@ dataTable.addColumn('datetime','日時');
 		options = {
 			width: 700,
 			height: 700,
-			title: '横浜市の気温変化'
+			title: '現在地の気温変化'
 		};
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(dataTable, options);
