@@ -67,7 +67,7 @@ dataTable.addColumn('datetime','日時');
 
 
       ]);              
-      var options = {title: '横浜市の気温変化'};
+      var options = {title: '横浜市の湿度変化'};
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(dataTable, options);
       }
