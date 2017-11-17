@@ -8,7 +8,7 @@
 	use PhpGpio\Gpio;
 	$gpio = new GPIO();
 
-	if($temp >= 18 && $temp <= 23){ //室温が18度以上＆23度以内だったら緑LEDが点灯
+	if($temp >= 18 && $temp <= 25){ //室温が18度以上＆25度以内だったら緑LEDが点灯
 		$gpio->setup(5, "out");
 		$gpio->output(5, 1);
 	}else{
@@ -20,8 +20,8 @@
 		$gpio->setup(6, "out");
 		$gpio->output(6, 1);
 	}else{
-		$gpio->setup(5, "out");
-		$gpio->output(5, 0);
+		$gpio->setup(6, "out");
+		$gpio->output(6, 0);
 	}
 
 ?>

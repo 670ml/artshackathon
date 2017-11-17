@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO("sqlite:/var/www/html/assets/db/sqlite.db");
+$pdo = new PDO("sqlite:assets/db/sqlite.db");
 
 $str_sql =("
 			SELECT
@@ -12,12 +12,12 @@ $i = 1;
 $cnt = 0;
 foreach($stmt as $row):
 	$date[$i] = htmlspecialchars($row["date"]);
-	$temp[$i] = htmlspecialchars($row["temp"]);
+	$pressure[$i] = htmlspecialchars($row["pressure"]);
 	$i++;
 	$cnt++;
 endforeach;
 ?>
 
 <?php foreach(range(1, $cnt) as $i): ?>
-		[<?=$i?>, <?=$temp[$i]?>],
+	[<?=$i?>, <?=$pressure[$i]?>],
 <?php endforeach; ?>

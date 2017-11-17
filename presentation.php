@@ -110,6 +110,7 @@ endforeach;
 	</script>
 
 	<script>
+/*
 	$(function(){
 		setInterval(function(){
 			$("#dsp1").load("assets/php/ajax_bme280.php #test1");
@@ -127,7 +128,7 @@ endforeach;
 		}
 		var result = test();
 		console.log(result);
-
+*/
 /*
 		setInterval(function(){
 			function test(){
@@ -335,12 +336,13 @@ endforeach;
 
 
 
+
 		/*================================*/
 		jQuery . jqplot(
 			'jqPlot-ajax_temp',
 			[
 				[
-					[1,1],
+					<?php require_once '/var/www/html/assets/php/ajax_temp.php'; ?>
 
 				]
 			],
@@ -359,11 +361,62 @@ endforeach;
 
 		/*================================*/
 
+
+		/*================================*/
+		jQuery . jqplot(
+			'jqPlot-ajax_hum',
+			[
+				[
+					<?php require_once '/var/www/html/assets/php/ajax_hum.php'; ?>
+
+				]
+			],
+			{
+				title: {
+					text : "現在の湿度",
+				},
+				axes: {
+					xaxis: {
+						min: 1,
+						max: 10,
+					},
+				},
+			}
+		);
+
+		/*================================*/
+
+
+		/*================================*/
+		jQuery . jqplot(
+			'jqPlot-ajax_pressure',
+			[
+				[
+					<?php require_once '/var/www/html/assets/php/ajax_pressure.php'; ?>
+
+				]
+			],
+			{
+				title: {
+					text : "現在の気圧",
+				},
+				axes: {
+					xaxis: {
+						min: 1,
+						max: 10,
+					},
+				},
+			}
+		);
+
+		/*================================*/
+
 	});
 	</script>
 
 </head>
 <body>
+
 	<div class="menu">
 		<div id="jqPlot-temp" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-prec" style="height: 200px; width: 300px;"></div>
@@ -372,8 +425,13 @@ endforeach;
 		<div id="jqPlot-snow" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-humi" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-atmo" style="height: 200px; width: 300px;"></div>
-		<div id="jqPlot-ajax_temp" style="height: 200px; width: 300px;"></div>
 	</div>
+	<div class="menu">
+		<div id="jqPlot-ajax_temp" style="height: 200px; width: 300px;"></div>
+		<div id="jqPlot-ajax_hum" style="height: 200px; width: 300px;"></div>
+		<div id="jqPlot-ajax_pressure" style="height: 200px; width: 300px;"></div>
+	</div>
+
 	<div class="devrama-book">
 		<ul class="front">
 			<li class="front">
