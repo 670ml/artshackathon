@@ -83,13 +83,16 @@ endforeach;
 		body{
 			min-height: 100%;
 		}
+		.menu:nth-child(2){
+			margin-top: 100px;
+		}
 		.menu div{
 			margin-top: 30px;
 			margin: 0 auto;
 			display: inline-block;
 		}
 		.devrama-book{
-			margin-top: 50px;
+			margin-top: 150px;
 			margin-left: 50%;
 		}
 
@@ -418,6 +421,7 @@ endforeach;
 <body>
 
 	<div class="menu">
+		<h1 align="center">横浜市の天気情報</h1>
 		<div id="jqPlot-temp" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-prec" style="height: 200px; width: 300px;"></div>
 		<div id="jqPlot-wisp" style="height: 200px; width: 300px;"></div>
@@ -468,9 +472,9 @@ endforeach;
 				Usually blank page.
 			</li>
 			<li>
-				<div>気温：<span id="dsp1"></span>℃</div>
-				<div>湿度：<span id="dsp2"></span>％</div>
-				<div>気圧：<span id="dsp3"></span>hPa</div>
+				<div style="font-size: 4em;">気温：<span id="dsp1"></span>℃</div>
+				<div style="font-size: 4em;">湿度：<span id="dsp2"></span>％</div>
+				<div style="font-size: 4em;">気圧：<span id="dsp3"></span>hPa</div>
 			</li>
 			<li><a href="3graph.php">気温グラフ</a></li>
 			<li><a href="2graph.php">湿度グラフ</a></li>
