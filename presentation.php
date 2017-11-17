@@ -472,16 +472,15 @@ endforeach;
 				Usually blank page.
 			</li>
 			<li>
-				<div style="font-size: 4em;">気温：<span id="dsp1"></span>℃</div>
-				<div style="font-size: 4em;">湿度：<span id="dsp2"></span>％</div>
-				<div style="font-size: 4em;">気圧：<span id="dsp3"></span>hPa</div>
+				<div style="font-size: 3em;">気温：<span id="dsp1"></span>℃</div>
+				<div style="font-size: 3em;">湿度：<span id="dsp2"></span>％</div>
+				<div style="font-size: 3em;">気圧：<span id="dsp3"></span>hPa</div>
 			</li>
+<!--
 			<li><a href="3graph.php">気温グラフ</a></li>
 			<li><a href="2graph.php">湿度グラフ</a></li>
 			<li><a href="1graph.php">気圧グラフ</a></li>
-			<li>
-
-			</li>
+-->
 		</ul>
 	</div>
 
