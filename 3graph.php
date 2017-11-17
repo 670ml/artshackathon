@@ -34,12 +34,6 @@ endforeach;
 </table>
 -->
 
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" content="">
-    <title>google-charts 横軸が日時なグラフ</title>
- 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript" ></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     
@@ -72,12 +66,6 @@ dataTable.addColumn('datetime','日時');
           chart.draw(dataTable, options);
       }
     </script> 
-  </head>
-  
-  <!-- HTML部分 -->
-  <body>
-    
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+      
+    <div id="chart_div"></div>
  
-  </body>
-</html>
