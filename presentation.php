@@ -82,9 +82,9 @@ endforeach;
 		}
 		body{
 			min-height: 100%;
-			margin-top: 30px;
 		}
 		.menu div{
+			margin-top: 30px;
 			margin: 0 auto;
 			display: inline-block;
 		}
@@ -110,14 +110,14 @@ endforeach;
 	</script>
 
 	<script>
-/*
+
 	$(function(){
 		setInterval(function(){
 			$("#dsp1").load("assets/php/ajax_bme280.php #test1");
 			$("#dsp2").load("assets/php/ajax_bme280.php #test2");
 			$("#dsp3").load("assets/php/ajax_bme280.php #test3");
 		}, 100);
-
+/*
 		function test(){
 			var result = $.ajax({
 				type: 'GET',
@@ -145,9 +145,9 @@ endforeach;
 			});
 			console.log(ajaxtemp);
 		}, 1000);
-
-	});
 */
+	});
+
 	</script>
 
 	<script>
