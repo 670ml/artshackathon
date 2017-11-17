@@ -1,16 +1,16 @@
 <?php
 //アメダスの情報を格納
 
-/*====発生エラーの理由を全て表示====================*/
+/*====発生エラーの理由を全て表示================*/
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
 error_reporting(-1);
 
-/*================================================*/
+/*==============================================*/
 
 date_default_timezone_set('Asia/Tokyo');
-$date = date("Y-m-d h");
-$j = date("H") + 2;
+$date = date("Y-m-d H");
+
 require_once("/var/www/html/assets/php/phpQuery-onefile.php");
 $doc = phpQuery::newDocumentFile("http://www.jma.go.jp/jp/amedas_h/today-46106.html");
 
@@ -29,7 +29,6 @@ foreach($doc["table:eq(5) tr"] as $row)
     $humi[$i] = pq($row)->find("td:eq(7)")->text();
     $atmo[$i] = pq($row)->find("td:eq(8)")->text();
 
-
 	$i++;
 	$cnt++;
 }
@@ -47,14 +46,14 @@ $str_sql =("
 		");
 $stmt = $pdo->prepare($str_sql);
 $stmt->bindValue(1, $date, PDO::PARAM_STR);
-$stmt->bindValue(2, $temp[$j], PDO::PARAM_STR);
-$stmt->bindValue(3, $prec[$j], PDO::PARAM_STR);
-$stmt->bindValue(4, $widi[$j], PDO::PARAM_STR);
-$stmt->bindValue(5, $wisp[$j], PDO::PARAM_STR);
-$stmt->bindValue(6, $suns[$j], PDO::PARAM_STR);
-$stmt->bindValue(7, $snow[$j], PDO::PARAM_STR);
-$stmt->bindValue(8, $humi[$j], PDO::PARAM_STR);
-$stmt->bindValue(9, $atmo[$j], PDO::PARAM_STR);
+$stmt->bindValue(2, $temp[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(3, $prec[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(4, $widi[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(5, $wisp[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(6, $suns[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(7, $snow[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(8, $humi[$i + 2], PDO::PARAM_STR);
+$stmt->bindValue(9, $atmo[$i + 2], PDO::PARAM_STR);
 $stmt->execute();
 
 

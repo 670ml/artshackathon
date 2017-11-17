@@ -22,7 +22,7 @@ endforeach;
 ?>
 
 <table border="1">
-	<?php foreach(range(1, 10) as $i): ?>
+	<?php foreach(range(1, $cnt) as $i): ?>
 		<tr>
 			<td><?=$date[$i]?></td>
 			<td><?=$temp[$i]?></td>
